@@ -1,0 +1,805 @@
+html
+<!DOCTYPE html>
+<html lang="so" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udgoon & Dhadhan - Xawaashyada Dabiiciga Ah</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spice: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#d97706', // Turmeric Yellow
+                            700: '#b45309', // Cinnamon Brown
+                            800: '#92400e', // Deep Nutmeg
+                            900: '#78350f', // Dark Clove
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .spice-bg-pattern {
+            background-color: #78350f;
+            background-image: radial-gradient(rgba(217, 119, 6, 0.15) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        /* Style for the realistic SIM Toolkit popup */
+        .stk-popup {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="font-sans bg-amber-50/30 text-gray-800 leading-relaxed overflow-x-hidden">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center text-white shadow-md shadow-amber-600/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold text-spice-900 tracking-tight block">Udgoon & Dhadhan</span>
+                        <span class="text-xs text-amber-600 font-semibold tracking-widest uppercase block -mt-1">Xaawjiyada Premium</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-spice-900">
+                    <a href="#hordhac" class="hover:text-amber-600 transition-colors">Hordhac</a>
+                    <a href="#nagusaabsan" class="hover:text-amber-600 transition-colors">Nagu Saabsan</a>
+                    <a href="#alaabta" class="hover:text-amber-600 transition-colors">Xaawjiyada</a>
+                    <a href="#dalbo" class="hover:text-amber-600 transition-colors">Soo Dalbo</a>
+                    <a href="#nala-xiriir" class="hover:text-amber-600 transition-colors">Nala Xiriir</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:block">
+                    <a href="#dalbo" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-amber-600/20 transition-all duration-300 hover:-translate-y-0.5">
+                        Dalbo Hadda
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 text-spice-900 hover:text-amber-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-amber-100 transition-all duration-300 ease-in-out">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#hordhac" class="block px-3 py-2 rounded-lg text-base font-medium text-spice-900 hover:bg-amber-50 hover:text-amber-600">Hordhac</a>
+                <a href="#nagusaabsan" class="block px-3 py-2 rounded-lg text-base font-medium text-spice-900 hover:bg-amber-50 hover:text-amber-600">Nagu Saabsan</a>
+                <a href="#alaabta" class="block px-3 py-2 rounded-lg text-base font-medium text-spice-900 hover:bg-amber-50 hover:text-amber-600">Xaawjiyada</a>
+                <a href="#dalbo" class="block px-3 py-2 rounded-lg text-base font-medium text-spice-900 hover:bg-amber-50 hover:text-amber-600">Soo Dalbo</a>
+                <a href="#nala-xiriir" class="block px-3 py-2 rounded-lg text-base font-medium text-spice-900 hover:bg-amber-50 hover:text-amber-600">Nala Xiriir</a>
+                <a href="#dalbo" class="block w-full text-center bg-amber-600 text-white font-semibold py-3 rounded-lg shadow-md mt-4">
+                    Dalbo Hadda
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hordhac" class="relative bg-spice-900 overflow-hidden min-h-[80vh] flex items-center">
+        <div class="absolute inset-0 spice-bg-pattern opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-spice-950 via-spice-900/90 to-transparent"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 font-semibold px-4 py-1.5 rounded-full text-sm tracking-wider uppercase border border-amber-500/30">
+                        ⭐ Labada Nooc Ee Ugu Sifaysan 120g
+                    </span>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                        Caraf Iyo Dhadhan <span class="text-amber-400 block sm:inline">Aan La Ilaawi Karin</span>
+                    </h1>
+                    <p class="text-lg text-amber-100 max-w-xl mx-auto lg:mx-0">
+                        Waxaan kuu haynaa labada xawaash ee loogu jecelyahay jikada: Pilau Masala oo bariiska u gaar ah iyo Chicken Masala oo loogu talagalay digaag dhadhan cajiib ah leh. Dhammaantood waa baakooyin 120g oo ku bixi kara M-Pesa toos ah!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#alaabta" class="bg-amber-500 hover:bg-amber-600 text-spice-950 font-bold px-8 py-4 rounded-full shadow-xl shadow-amber-500/20 transition-all duration-300 hover:scale-105 text-center">
+                            Eeg Labada Xawaash
+                        </a>
+                        <a href="#dalbo" class="bg-transparent hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-full border-2 border-white/30 transition-all duration-300 text-center">
+                            Dalbo Labada Nooc
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image Showcase -->
+                <div class="lg:col-span-5 relative mt-8 lg:mt-0">
+                    <div class="relative mx-auto max-w-[400px] lg:max-w-none">
+                        <!-- Main Image frame -->
+                        <div class="relative z-10 rounded-2xl overflow-hidden border-4 border-amber-500/30 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=600" 
+                                 alt="[Pilau iyo Chicken Masala dabiici ah]" 
+                                 class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+                                 onerror="this.src='https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&q=80&w=600'">
+                        </div>
+                        
+                        <!-- Floating Badges -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-3 z-20 border border-amber-100">
+                            <div class="w-10 h-10 bg-green-100 text-green-700 rounded-lg flex items-center justify-center font-bold text-xl">✓</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Miisaan Sax Ah</h4>
+                                <p class="text-xs text-gray-500">Baako dabiici ah oo 120g</p>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-amber-500/30 rounded-full blur-3xl z-0"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY FEATURES -->
+    <section class="py-12 bg-white border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-amber-50/50 transition-colors">
+                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-spice-900 text-lg">Tayo Aad U Sarreysa</h3>
+                        <p class="text-sm text-gray-600">Waa geedo dabiici ah oo la isku daray si xirfad leh.</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-amber-50/50 transition-colors">
+                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-spice-900 text-lg">Caraf Dooxaysa</h3>
+                        <p class="text-sm text-gray-600">Waxay cuntadaada ka dhigayaan mid laga soo carfiyo meel fog.</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-amber-50/50 transition-colors">
+                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-spice-900 text-lg">Abaabul & Nadaafad</h3>
+                        <p class="text-sm text-gray-600">Waxaa lagu xidhay baakooyin dhowraya nadaafadda iyo tayada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="nagusaabsan" class="py-20 bg-amber-50/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- About Images -->
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=400" 
+                             alt="[Bariis pilau ah oo carfaya]" 
+                             class="rounded-2xl w-full h-64 object-cover shadow-lg"
+                             onerror="this.src='https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&q=80&w=400'">
+                        <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&q=80&w=400" 
+                             alt="[Chicken masala digaag ku dhex jira]" 
+                             class="rounded-2xl w-full h-64 object-cover shadow-lg mt-8"
+                             onerror="this.src='https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&q=80&w=400'">
+                    </div>
+                    <div class="absolute -z-10 -bottom-6 -left-6 w-32 h-32 bg-amber-200 rounded-full blur-2xl opacity-60"></div>
+                </div>
+
+                <!-- About Text content -->
+                <div class="space-y-6">
+                    <span class="text-amber-650 font-bold tracking-widest uppercase text-sm block">Ujeedadeena</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-spice-900 leading-tight">
+                        Sirta Ka Dambaysa Labadan Xawaash ee Qiimaha Jaban!
+                    </h2>
+                    <p class="text-gray-600">
+                        Bariiska pilau-ga ah iyo suugada digaaga ama digaaga duban waa labada cunto ee ugu caansan munaasabadaha iyo jikooyinka. Sidaa darteed, waxaan go'aansanney inaan kuu soo saarno laba nooc oo kaliya laakiin ah kuwa loogu jecelyahay oo dammaanad qaadaya dhadhan boqortooyo ah.
+                    </p>
+                    <p class="text-gray-600">
+                        Xawaashyadayadu uma baahna inaad wax kale ku dhex darto; baako kasta oo 120g ah waxaa ku diyaarsan wax kasta oo u yeeli lahaa cuntadaada caraf iyo dhadhan ka duwan kuwii hore.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-6 border-t border-amber-100">
+                        <div>
+                            <span class="block text-3xl font-serif font-bold text-amber-600">120 Gram</span>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Miisaanka Baako kasta</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-serif font-bold text-amber-600">100%</span>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Dabiici dammaanad ah</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section id="alaabta" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-amber-600 font-bold tracking-widest uppercase text-sm block">Labada Nooc Ee Ugu Sifaysan</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-spice-900">Ku Dawoow Dhadhankooda</h2>
+                <div class="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
+                <p class="text-gray-600">
+                    Waxaan hadda idiin soo bandhigaynaa labada nooc ee aan ku takhasusnay kuwaas oo ku jira baakooyin 120g oo si qurux badan loo habeeyay.
+                </p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto" id="spices-grid">
+                
+                <!-- Spice 1: Pilau Masala -->
+                <div class="spice-card bg-amber-50/40 rounded-2xl overflow-hidden border border-amber-100 hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=500" 
+                             alt="[Xawaashka Pilau Masala]" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&q=80&w=500'">
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bariiska Premium</span>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-serif text-2xl font-bold text-spice-900">Pilau Masala (120g)</h3>
+                                <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded">120g</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-3">
+                                Waa isku-dar gaar ah oo loogu talagalay bariiska pilau-ga ee udugga leh. Waxay ka kooban tahay xididdada dabiiciga ah oo si wadajir ah u abuuraya caraf aad u macaan oo cuntada kor u qaadaysa.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-6 border-t border-amber-100">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Qiimaha Baakada</span>
+                                <span class="text-2xl font-bold text-amber-700">Ksh 240</span>
+                            </div>
+                            <button onclick="selectSpice('Pilau Masala (120g)', '240')" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 hover:scale-105 shadow-md shadow-amber-600/10">
+                                Dalbo Hadda
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spice 2: Chicken Masala -->
+                <div class="spice-card bg-amber-50/40 rounded-2xl overflow-hidden border border-amber-100 hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&q=80&w=500" 
+                             alt="[Xawaashka Chicken Masala]" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&q=80&w=500'">
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Digaaga & Suugada</span>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-serif text-2xl font-bold text-spice-900">Chicken Masala (120g)</h3>
+                                <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded">120g</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-3">
+                                Noocan waxaa si gaar ah loogu dhex daray xawaashyo kicinaya dhadhanka digaaga. Haddi ay ahaan lahayd digaag suugo ah ama mid la dubay, wuxuu siinayaa midab qurux badan iyo dhadhan gaar ah.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-6 border-t border-amber-100">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Qiimaha Baakada</span>
+                                <span class="text-2xl font-bold text-amber-700">Ksh 230</span>
+                            </div>
+                            <button onclick="selectSpice('Chicken Masala (120g)', '230')" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 hover:scale-105 shadow-md shadow-amber-600/10">
+                                Dalbo Hadda
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIAL OFFER -->
+    <section class="py-16 bg-gradient-to-r from-spice-850 to-spice-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 spice-bg-pattern opacity-10"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-400">Ma Doonaysaa Combo (Labada Noocba)?</h2>
+            <p class="text-amber-100 max-w-2xl mx-auto">
+                Dalbo labadaba isku mar si aad u hesho jikadaada oo dhammaystiran! Waxaan kuu samaynaynaa qiimo dhimis gaar ah oo aad ku helayso labadaba Ksh 450 oo kaliya.
+            </p>
+            <div class="pt-4">
+                <a href="#dalbo" class="bg-amber-500 hover:bg-amber-600 text-spice-950 font-bold px-8 py-3.5 rounded-full inline-block transition-transform duration-300 hover:scale-105 shadow-lg">
+                    Soo Dalbo Hadda
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORDER SECTION -->
+    <section id="dalbo" class="py-20 bg-amber-50/10 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-amber-100/80 overflow-hidden">
+                <div class="bg-spice-900 text-white p-8 sm:p-12 text-center relative">
+                    <div class="absolute inset-0 spice-bg-pattern opacity-10"></div>
+                    <span class="text-amber-400 font-bold uppercase text-xs tracking-widest block mb-2">Soo Dalbo Si Fudud</span>
+                    <h2 class="font-serif text-3xl font-bold">Foomka Dalbashada Xawaashka</h2>
+                    <p class="text-amber-100 text-sm mt-2 max-w-lg mx-auto">
+                        Fariir foomka hoose si aad u hesho xawaashka aad rabto. Kadib markaad qorto PIN-kaaga M-Pesa ee STK Push-ka, dalabka wuxuu si toos ah ugu soo dhacayaa WhatsApp-keena!
+                    </p>
+                </div>
+
+                <!-- Order Form -->
+                <form id="order-form" onsubmit="handleOrderSubmit(event)" class="p-8 sm:p-12 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Name Input -->
+                        <div>
+                            <label for="order-name" class="block text-sm font-semibold text-spice-900 mb-2">Magacaaga oo Buuxa *</label>
+                            <input type="text" id="order-name" required placeholder="Tusaale: Cali Axmed" 
+                                class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-amber-50/30 transition-all">
+                        </div>
+
+                        <!-- Phone Input (M-Pesa Number) -->
+                        <div>
+                            <label for="order-phone" class="block text-sm font-semibold text-spice-900 mb-2">Lambarka M-Pesa ee lacagta laga goynayo * <span class="text-xs text-red-500">(Safaricom kaliya)</span></label>
+                            <input type="tel" id="order-phone" required placeholder="Tusaale: 07XXXXXXXX ama 01XXXXXXXX" 
+                                class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-amber-50/30 transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Select Spice -->
+                        <div>
+                            <label for="order-spice" class="block text-sm font-semibold text-spice-900 mb-2">Dooro Xawaashka *</label>
+                            <select id="order-spice" onchange="calculateTotal()" required 
+                                class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-amber-50/30 transition-all">
+                                <option value="" disabled selected>Fadlan dooro...</option>
+                                <option value="Pilau Masala (120g)" data-price="240">Pilau Masala (120g) - Ksh 240</option>
+                                <option value="Chicken Masala (120g)" data-price="230">Chicken Masala (120g) - Ksh 230</option>
+                                <option value="Labada Noocba (Pilau + Chicken)" data-price="450">Labada Noocba - Combo Qiime dhimis ah Ksh 450</option>
+                            </select>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div>
+                            <label for="order-qty" class="block text-sm font-semibold text-spice-900 mb-2">Xaddiga (Imisa Baako oo 120g ah) *</label>
+                            <input type="number" id="order-qty" min="1" value="1" oninput="calculateTotal()" required 
+                                class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-amber-50/30 transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Delivery Address -->
+                    <div>
+                        <label for="order-address" class="block text-sm font-semibold text-spice-900 mb-2">Cinwaanka / Goobta Gaarsiinta *</label>
+                        <input type="text" id="order-address" required placeholder="Tusaale: Eastleigh, Nairobi, Kenya" 
+                            class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-amber-50/30 transition-all">
+                    </div>
+
+                    <!-- Special Instructions -->
+                    <div>
+                        <label for="order-notes" class="block text-sm font-semibold text-spice-900 mb-2">Fariin ama Codsi Gaar Ah</label>
+                        <textarea id="order-notes" rows="3" placeholder="Tusaale: Haddii aad rabto in baako gaar ah ama hadiyad ahaan laguugu xidho..." 
+                            class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-amber-50/30 transition-all"></textarea>
+                    </div>
+
+                    <!-- Total Price Display -->
+                    <div class="bg-amber-50 border border-amber-100 p-4 rounded-xl flex items-center justify-between">
+                        <div>
+                            <span class="text-sm text-gray-500 block">Isu-geynta Qiimaha Alaabta</span>
+                            <span class="text-xs text-amber-600">* Laguma darin qiimaha gaarsiinta (Delivery fee)</span>
+                        </div>
+                        <div class="text-right flex flex-col">
+                            <span class="text-2xl font-bold text-spice-900" id="total-price-display">Ksh 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submit-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-600/20 transition-all duration-300 hover:scale-[1.01] flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        Ku bixi M-Pesa Direct (STK Push)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION (Centered contact details) -->
+    <section id="nala-xiriir" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-amber-600 font-bold tracking-widest uppercase text-sm block">Xiriir Toos Ah</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-spice-900">Nala Soo Xiriir</h2>
+                <div class="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
+                <p class="text-gray-600">
+                    Wixii su'aalo ah, talo bixin ama dalabaad waaweyn oo ku saabsan Pilau iyo Chicken Masala (120g), fadlan nagala soo xiriir khadadka hoose.
+                </p>
+            </div>
+
+            <!-- Beautiful Centered Contact Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Card 1: Phone -->
+                <div class="flex flex-col items-center p-8 rounded-2xl bg-amber-50/40 border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mb-2">Taleefan</span>
+                    <a href="tel:+254717229122" class="text-lg font-bold text-spice-900 hover:text-amber-650 transition-colors">+254 717 229 122</a>
+                </div>
+
+                <!-- Card 2: Email -->
+                <div class="flex flex-col items-center p-8 rounded-2xl bg-amber-50/40 border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mb-2">Imeelka</span>
+                    <a href="mailto:info@udgoonanddhadhan.com" class="text-lg font-bold text-spice-900 hover:text-amber-650 transition-colors">info@udgoonanddhadhan.com</a>
+                </div>
+
+                <!-- Card 3: Location -->
+                <div class="flex flex-col items-center p-8 rounded-2xl bg-amber-50/40 border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mb-2">Xafiiska</span>
+                    <span class="text-lg font-bold text-spice-900">Eastleigh, Nairobi, Kenya</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-spice-950 text-white pt-16 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 spice-bg-pattern opacity-5"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-white/10">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-spice-950">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                            </svg>
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-tight text-white">Udgoon & Dhadhan</span>
+                    </div>
+                    <p class="text-sm text-amber-100/60">
+                        Carfiyaha cuntada iyo caafimaadka qoyskaaga. Wax kasta oo ku saabsan xawaashyada dabiiciga ah ee dalka.
+                    </p>
+                </div>
+
+                <!-- Quick links -->
+                <div>
+                    <h4 class="font-bold text-amber-400 text-sm uppercase tracking-wider mb-4">Xiriirada Degdega ah</h4>
+                    <ul class="space-y-2 text-sm text-amber-100/75">
+                        <li><a href="#hordhac" class="hover:text-amber-400 transition-colors">Hordhac</a></li>
+                        <li><a href="#nagusaabsan" class="hover:text-amber-400 transition-colors">Nagu Saabsan</a></li>
+                        <li><a href="#alaabta" class="hover:text-amber-400 transition-colors">Xaawjiyada</a></li>
+                        <li><a href="#dalbo" class="hover:text-amber-400 transition-colors">Soo Dalbo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Spices -->
+                <div>
+                    <h4 class="font-bold text-amber-400 text-sm uppercase tracking-wider mb-4">Noocyada Xawaashka</h4>
+                    <ul class="space-y-2 text-sm text-amber-100/75">
+                        <li>Pilau Masala (120g)</li>
+                        <li>Chicken Masala (120g)</li>
+                    </ul>
+                </div>
+
+                <!-- Socials -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-amber-400 text-sm uppercase tracking-wider">Wararkayada</h4>
+                    <p class="text-xs text-amber-100/60">Is qor si aad u hesho cuntooyin cusub iyo qiimo dhimis.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Imeelkaaga" class="bg-white/10 border border-white/25 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-500 w-full">
+                        <button class="bg-amber-500 hover:bg-amber-600 text-spice-950 font-bold px-4 py-2 rounded-lg text-xs">OK</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-amber-100/40 gap-4">
+                <p>© Udgoon & Dhadhan. Dhammaan xuquuqdu waa dhowran tahay.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-amber-400">Shuruudaha Isticmaalka</a>
+                    <a href="#" class="hover:text-amber-400">Xogta Gaarka ah</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SAFARICOM M-PESA STK PUSH POPUP SIMULATOR (SCREEN OVERLAY) -->
+    <div id="stk-push-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <!-- Realistic Phone Shell Simulator -->
+        <div class="bg-slate-950 p-4 pb-12 rounded-[50px] border-4 border-slate-800 shadow-2xl max-w-sm w-full relative">
+            <!-- Notch -->
+            <div class="w-32 h-6 bg-slate-800 absolute top-4 left-1/2 -translate-x-1/2 rounded-full z-20 flex items-center justify-center">
+                <div class="w-3 h-3 bg-black rounded-full mr-2"></div>
+                <div class="w-8 h-1 bg-gray-600 rounded-full"></div>
+            </div>
+            
+            <!-- Simulated Screen Area -->
+            <div class="bg-slate-900 rounded-[38px] overflow-hidden relative border border-slate-800 h-[520px] flex flex-col justify-between p-6 stk-popup pt-12">
+                <!-- Status Bar -->
+                <div class="flex justify-between items-center text-[11px] text-gray-400 font-medium px-2 py-1">
+                    <span>Safaricom</span>
+                    <div class="flex items-center gap-1">
+                        <span>4G</span>
+                        <div class="w-5 h-3 border border-gray-400 rounded-sm p-0.5 flex items-center"><div class="bg-green-500 h-full w-4 rounded-2xs"></div></div>
+                    </div>
+                </div>
+
+                <!-- STK Push Screen Content -->
+                <div class="flex-grow flex items-center justify-center">
+                    <!-- The SIM Toolkit Dialog Box -->
+                    <div class="bg-gray-100 rounded-lg shadow-xl border border-gray-300 w-full p-5 text-gray-950 font-mono text-sm leading-relaxed">
+                        <div class="border-b border-gray-300 pb-2 mb-3">
+                            <span class="font-bold text-xs text-gray-650 tracking-wider">SIM Toolkit</span>
+                        </div>
+                        <p class="mb-3 text-xs font-semibold text-center uppercase tracking-wide">M-PESA PUSH</p>
+                        <p class="mb-4 text-xs text-gray-800">
+                            Do you want to pay <span id="stk-amount-display" class="font-bold">KES 0.00</span> to Udgoon & Dhadhan? 
+                            Enter 4-Digit M-Pesa PIN:
+                        </p>
+
+                        <!-- Pin Input Box -->
+                        <div class="relative mb-5">
+                            <input type="password" id="stk-pin" maxlength="4" placeholder="••••" required
+                                class="w-full tracking-[1.5em] text-center font-bold text-xl py-3 border-2 border-green-600 rounded focus:outline-none focus:ring-2 focus:ring-green-400 bg-white text-gray-900">
+                            <p id="stk-error" class="hidden text-xs text-red-600 font-bold mt-1 text-center">Fadlan qor PIN-kaaga (4 lambar)!</p>
+                        </div>
+
+                        <!-- Buttons like original SIM tool kit -->
+                        <div class="flex justify-between gap-3 text-xs font-bold">
+                            <button type="button" onclick="cancelStkPush()" class="w-1/2 bg-gray-300 hover:bg-gray-400 text-gray-800 py-3 rounded active:scale-95 transition-all uppercase tracking-wider">
+                                Cancel
+                            </button>
+                            <button type="button" onclick="confirmMpesaPin()" class="w-1/2 bg-green-600 hover:bg-green-700 text-white py-3 rounded active:scale-95 transition-all uppercase tracking-wider">
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M-Pesa Processing/Success Screen (Initially Hidden) -->
+                <div id="stk-overlay-screen" class="hidden absolute inset-0 bg-slate-900/95 z-30 flex flex-col items-center justify-center p-6 text-center">
+                    <!-- Processing State -->
+                    <div id="stk-state-processing" class="space-y-4">
+                        <div class="w-14 h-14 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                        <h4 class="text-white text-lg font-bold">Sending PIN...</h4>
+                        <p class="text-sm text-gray-400">Fadlan sug, lacag bixinta waxaa laga goynayaa M-Pesa-gaaga si toos ah.</p>
+                    </div>
+
+                    <!-- Success State -->
+                    <div id="stk-state-success" class="hidden space-y-4">
+                        <div class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto text-3xl font-bold animate-bounce">
+                            ✓
+                        </div>
+                        <h4 class="text-green-500 text-xl font-bold">M-PESA SUCCESS!</h4>
+                        <p class="text-sm text-white">Payment Received.</p>
+                        <div class="bg-slate-800 p-3 rounded-lg text-left font-mono text-xs text-gray-300 space-y-1">
+                            <p><strong>To:</strong> Udgoon & Dhadhan</p>
+                            <p><strong>Ref:</strong> <span id="mpesa-ref-code"></span></p>
+                            <p><strong>Amount:</strong> <span id="mpesa-success-amount"></span></p>
+                        </div>
+                        <span class="text-xs text-gray-400 block pt-4 animate-pulse">Ku wareejinaya WhatsApp dhowaan...</span>
+                    </div>
+                </div>
+
+                <!-- Simulated Home Button -->
+                <div class="w-32 h-1 bg-gray-600 rounded-full mx-auto mt-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR LOGIC, MPESA & WHATSAPP INTERACTION -->
+    <script>
+        // WhatsApp Settings
+        const WHATSAPP_NUMBER = "254717229122"; // Lambarkaaga WhatsApp ee saxda ah ee +254717229122
+
+        // Global variables to hold temporary order state
+        let currentOrderData = {};
+
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+            } else {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`;
+            }
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+            });
+        });
+
+        // Pre-select Spice in the Order Form
+        function selectSpice(name, price) {
+            const selectEl = document.getElementById('order-spice');
+            selectEl.value = name;
+            
+            // Scroll smoothly to order section
+            document.getElementById('dalbo').scrollIntoView({ behavior: 'smooth' });
+            
+            // Recalculate total price
+            calculateTotal();
+        }
+
+        // Calculate Total Price (KES / Ksh)
+        function calculateTotal() {
+            const selectEl = document.getElementById('order-spice');
+            const qtyEl = document.getElementById('order-qty');
+            const displayEl = document.getElementById('total-price-display');
+
+            if (!selectEl.value) {
+                displayEl.innerText = 'Ksh 0';
+                return;
+            }
+
+            const selectedOption = selectEl.options[selectEl.selectedIndex];
+            const price = parseFloat(selectedOption.getAttribute('data-price'));
+            const qty = parseInt(qtyEl.value) || 1;
+
+            const totalKES = price * qty;
+            displayEl.innerText = `Ksh ${totalKES.toLocaleString('en-US')}`;
+        }
+
+        // Trigger STK Push Prompt on Form Submit
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('order-name').value;
+            const phone = document.getElementById('order-phone').value;
+            const spice = document.getElementById('order-spice').value;
+            const qty = document.getElementById('order-qty').value;
+            const address = document.getElementById('order-address').value;
+            const notes = document.getElementById('order-notes').value || "Ma jiraan wax codsi gaar ah.";
+
+            // Calculate pricing
+            const selectedOption = document.getElementById('order-spice').options[document.getElementById('order-spice').selectedIndex];
+            const unitPrice = parseFloat(selectedOption.getAttribute('data-price'));
+            const totalKES = unitPrice * qty;
+
+            // Save order data globally
+            currentOrderData = {
+                name: name,
+                phone: phone,
+                spice: spice,
+                qty: qty,
+                address: address,
+                notes: notes,
+                totalKES: totalKES
+            };
+
+            // Show M-Pesa STK Push Simulator Modal
+            const modal = document.getElementById('stk-push-modal');
+            document.getElementById('stk-amount-display').innerText = `KES ${totalKES.toLocaleString('en-US')}.00`;
+            document.getElementById('stk-pin').value = ''; // Clear PIN field
+            document.getElementById('stk-error').classList.add('hidden'); // Clear error state
+
+            // Reset states inside phone simulation
+            document.getElementById('stk-overlay-screen').classList.add('hidden');
+            document.getElementById('stk-state-processing').classList.remove('hidden');
+            document.getElementById('stk-state-success').classList.add('hidden');
+
+            modal.classList.remove('hidden');
+        }
+
+        // Cancel STK Push Modal
+        function cancelStkPush() {
+            document.getElementById('stk-push-modal').classList.add('hidden');
+        }
+
+        // Handle Pin Confirmation in the STK Push Screen
+        function confirmMpesaPin() {
+            const pinInput = document.getElementById('stk-pin');
+            const errorText = document.getElementById('stk-error');
+
+            if (pinInput.value.length < 4) {
+                errorText.classList.remove('hidden');
+                return;
+            }
+
+            errorText.classList.add('hidden');
+
+            // Show Processing Overlay Screen (Simulate Daraja validation)
+            const overlay = document.getElementById('stk-overlay-screen');
+            overlay.classList.remove('hidden');
+
+            setTimeout(() => {
+                // Simulate Successful STK PIN processing
+                document.getElementById('stk-state-processing').classList.add('hidden');
+                
+                // Generate simulated M-Pesa transaction reference (e.g., KGR887YTX2)
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let txRef = 'S'; // Kenya Safaricom standard start character
+                for (let i = 0; i < 9; i++) {
+                    txRef += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+
+                document.getElementById('mpesa-ref-code').innerText = txRef;
+                document.getElementById('mpesa-success-amount').innerText = `KES ${currentOrderData.totalKES.toLocaleString('en-US')}.00`;
+
+                // Show Success Screen inside phone
+                document.getElementById('stk-state-success').classList.remove('hidden');
+
+                // Auto redirect to WhatsApp after 3 seconds
+                setTimeout(() => {
+                    // Hide modal
+                    document.getElementById('stk-push-modal').classList.add('hidden');
+
+                    // Build and Format WhatsApp text receipt
+                    const whatsappMsg = `*DALAB CUSUB: UDGOON & DHADHAN* 🌶️\n\n` +
+                                        `👤 *Macmiilka:* ${currentOrderData.name}\n` +
+                                        `📞 *M-Pesa Number:* ${currentOrderData.phone}\n` +
+                                        `📦 *Xawaashka:* ${currentOrderData.spice}\n` +
+                                        `🔢 *Xaddiga:* ${currentOrderData.qty} Baako (120g)\n` +
+                                        `📍 *Goobta Gaarsiinta:* ${currentOrderData.address}\n` +
+                                        `📝 *Codsiga:* ${currentOrderData.notes}\n\n` +
+                                        `💰 *Qiimaha:* KES ${currentOrderData.totalKES.toLocaleString('en-US')}.00\n` +
+                                        `✅ *Xaaladda M-Pesa:* Direct STK Push Paid (PIN Verified)\n` +
+                                        `🧾 *Rasiidka (Ref):* ${txRef}\n\n` +
+                                        `_Fadlan ii diyaari dalabkayga dhowaan._`;
+
+                    const encodedMsg = encodeURIComponent(whatsappMsg);
+                    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+                    // Open WhatsApp chat in new window
+                    window.open(whatsappUrl, '_blank');
+
+                    // Reset web form
+                    document.getElementById('order-form').reset();
+                    calculateTotal();
+
+                }, 3000);
+
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
